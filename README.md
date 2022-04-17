@@ -1,2 +1,2 @@
-# moloch
-Light-weight system info for panel
+# pastewin
+ Free alternative PasteBin front-end
