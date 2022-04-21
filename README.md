@@ -1,2 +1,2 @@
 # pastewin
- Free alternative PasteBin front-end
+ Free alternative Pastebin front-end
