@@ -12,7 +12,7 @@ def pretty_size(bytes, units=UNITS_MAPPING):
     # Source: https://stackoverflow.com/a/12912296
 
     bytes = len(bytes.encode("utf-8"))
-    
+
     for factor, suffix in units:
         if bytes >= factor:
             break

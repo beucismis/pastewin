@@ -21,7 +21,7 @@ def get_paste(id: str):
 
     if r.status != 200:
         abort(404)
-    
+
     return r
 
 
@@ -32,7 +32,7 @@ def index():
 
 @app.route("/<id>")
 def paste(id: str):
-    paste = get_paste(id) # Test ID: B5EfdLF6
+    paste = get_paste(id)  # Test ID: B5EfdLF6
     text = paste.data.decode("utf-8")
     size = pretty_size(text)
 
@@ -54,7 +54,7 @@ def raw(id: str):
 @app.route("/dl/<id>")
 def download(id: str):
     paste = get_paste(id)
-    
+
     buffer = BytesIO()
     buffer.write(paste.data)
     buffer.seek(0)
@@ -63,10 +63,10 @@ def download(id: str):
         buffer,
         as_attachment=True,
         attachment_filename=f"pastewin_{id}.txt",
-        mimetype="text/text/plain"
+        mimetype="text/text/plain",
     )
-    
-    
+
+
 @app.errorhandler(404)
 def paste_not_found(error):
     return render_template("paste_not_found.html"), 404
@@ -77,4 +77,4 @@ with app.test_request_context():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", debug=True)
