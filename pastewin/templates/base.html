@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <nav></nav>
+    <main>
+      <div class="container">
+        <div class="title">
+          <h1>Pastewin</h1>
+          <h2>Free alternative Pastebin front-end</h2>
+          <div class="center">
+            <a class="extra" href="/">[ Main ]</a>
+            <a class="extra" href="/about">[ About ]</a>
+            <a class="extra" href="https://github.com/beucismis/pastewin" target="_blank">[ Source ]</a>
+          </div>
+        </div>
+        <div class="paste">
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+</html>

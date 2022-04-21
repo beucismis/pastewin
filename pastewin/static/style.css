@@ -1,0 +1,111 @@
+:root {
+  --text-color: #333333;
+  --title-color: #AA0000;
+  --extra-color: #5D12E9;
+  --border-color: #E9880A;
+  --background-color: #EEEEEE;
+  --code-block-background-color: #FFFFFF;
+}
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+  font-size: 15px;
+  text-align: center;
+  font: 15px helvetica;
+  background-color: var(--background-color);
+}
+
+p, a {
+  color: var(--text-color);
+}
+
+footer {
+  padding-bottom: 25px;
+  color: var(--text-color);
+}
+
+.container {
+  width: 45em;
+  border: none;
+  padding: 10px;
+  font-size: 100%;
+  text-align: left;
+  margin: 3em auto 2em;
+  /* line-height: 1.5em; */
+}
+
+.title {
+  font-weight: 800;
+  margin-bottom: 2em;
+  color: var(--title-color);
+}
+
+.title h1 {
+  font-size: 20pt;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+.title h2 {
+  font-size: 12pt;
+  text-align: center;
+  margin-bottom: 0.5em;
+  color: var(--text-color);
+}
+
+.title .extra {
+  margin-left: 0.3em;
+  margin-right: 0.3em;
+  text-decoration: none;
+  color: var(--extra-color);
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info .extra {
+  margin-left: 0.5em;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.paste {
+  padding: 10px;
+}
+
+.paste h3 {
+  font-size: 12pt;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: var(--text-color);
+}
+
+.paste p {
+  margin: 1em 0;
+}
+
+.paste .code-block {
+  position: relative;
+}
+
+.paste .code-block pre {
+  padding: 0 .4em;
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  background-color: var(--code-block-background-color);
+}
+
+.paste .code-block pre code {
+  font-size: 85%;
+}
+
+.center {
+  text-align: center;
+}

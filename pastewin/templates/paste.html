@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Pastewin - Free alternative Pastebin front-end{% endblock %}
+
+{% block content %}
+  <div class="info">
+    <div>
+      <div>
+        <p>Size: {{ size }}</p>
+      </div>
+    </div>
+    <div>
+      <div>
+        <a class="extra" href="/raw/{{ id }}">Raw</a>
+        <a class="extra" href="/dl/{{ id }}">Download</a>
+      </div>
+    </div>
+  </div>
+  <div class="code-block">
+    <pre><code>{{ text }}</code></pre>
+  </div>
+{% endblock %}
