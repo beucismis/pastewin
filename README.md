@@ -25,7 +25,8 @@ git clone https://github.com/beucismis/pastewin
 ```
 
 Install dependencies:
-```
+```shell
+cd pastewin
 pip3 install --user -r requirements.txt
 ```
 
