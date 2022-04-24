@@ -13,6 +13,8 @@ from flask import render_template
 from utils import pretty_size
 
 
+version = "0.1.0"
+
 app = Flask(__name__)
 http = urllib3.PoolManager()
 
@@ -22,7 +24,7 @@ def get_paste(id: str):
 
     if r.status != 200:
         abort(404)
-    
+
     return r
 
 
@@ -33,16 +35,15 @@ def index():
 
 @app.route("/<id>")
 def paste(id: str):
-    paste = get_paste(id) # Test ID: B5EfdLF6
+    paste = get_paste(id)  # Test ID: B5EfdLF6
     text = paste.data.decode("utf-8")
-    size = pretty_size(text)
 
-    return render_template("paste.html", id=id, size=size, text=text)
+    return render_template("paste.html", id=id, size=pretty_size(text), text=text)
 
 
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    return render_template("about.html", version=version)
 
 
 @app.route("/raw/<id>")
@@ -55,7 +56,7 @@ def raw(id: str):
 @app.route("/dl/<id>")
 def download(id: str):
     paste = get_paste(id)
-    
+
     buffer = BytesIO()
     buffer.write(paste.data)
     buffer.seek(0)
@@ -63,11 +64,11 @@ def download(id: str):
     return send_file(
         buffer,
         as_attachment=True,
-        attachment_filename=f"pastewin_{id}.txt",
-        mimetype="text/text/plain"
+        download_name=f"pastewin_{id}",
+        mimetype="text/plain",
     )
-    
-    
+
+
 @app.errorhandler(404)
 def paste_not_found(error):
     return render_template("paste_not_found.html"), 404
