@@ -1,3 +1,7 @@
+import urllib3
+from flask import abort
+
+
 UNITS_MAPPING = [
     (1 << 50, " PB"),
     (1 << 40, " TB"),
@@ -6,9 +10,19 @@ UNITS_MAPPING = [
     (1 << 10, " KB"),
     (1, (" Byte", " Bytes")),
 ]
+http = urllib3.PoolManager()
 
 
-def pretty_size(bytes, units=UNITS_MAPPING):
+def get_paste(id: str):
+    r = http.request("GET", f"https://pastebin.com/raw/{id}")
+
+    if r.status != 200:
+        abort(404)
+
+    return r
+
+
+def pretty_size(bytes: int, units=UNITS_MAPPING):
     # Source: https://stackoverflow.com/a/12912296
 
     bytes = len(bytes.encode("utf-8"))
