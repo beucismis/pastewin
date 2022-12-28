@@ -3,7 +3,7 @@
 
 {% block content %}
   <p>A light and fast static front-end for users of countries where Pastebin is banned. It was created with Python and Flask. Read page <a href="https://github.com/beucismis/pastewin/blob/main/README.md" target="_blank">README.md</a> for self-hosted setup. Recommend to your friends.</p>
-  <p>Example paste: <a href="https://pastewin.herokuapp.com/B5EfdLF6" target="_blank">https://pastewin.herokuapp.com/B5EfdLF6</a></p>
+  <p>Example paste: <a href="https://pastewin.up.railway.app/B5EfdLF6" target="_blank">https://pastewin.up.railway.app/B5EfdLF6</a></p>
   <p>
     Current version: {{ version }}</br>
     License: GNU General Public License 3.0</br>
@@ -11,6 +11,6 @@
   </p>
   <p>It is recommended to use it with the <a href="https://einaregilsson.com/redirector" target="_blank">Redirector</a> browser plugin. Example configuration:</p>
   <div class="code-block">
-    <pre><code>Description: Pastebin to Pastewin</br>Example URL: https://pastebin.com/B5EfdLF6</br>Include pattern: ^https?://(?:.*\.)*(?&lt;!link.)pastebin\.com(/.*)?$</br>Redirect to: https://pastewin.herokuapp.com$1</br>Pattern type: Regular Expression</br>Pattern Description: ?</br>Example result: https://pastewin.herokuapp.com/B5EfdLF6</code></pre>
+    <pre><code>Description: Pastebin to Pastewin</br>Example URL: https://pastewin.up.railway.app/B5EfdLF6</br>Include pattern: ^https?://(?:.*\.)*(?&lt;!link.)pastebin\.com(/.*)?$</br>Redirect to: https://pastewin.up.railway.app$1</br>Pattern type: Regular Expression</br>Pattern Description: ?</br>Example result: https://pastewin.up.railway.app/B5EfdLF6</code></pre>
   </div>
 {% endblock %}
