@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Pastewin - Free alternative Pastebin front-end{% endblock %}
+{% block title %}Pastewin - {{ id }}{% endblock %}
 
 {% block content %}
   <div class="info">
@@ -16,6 +16,6 @@
     </div>
   </div>
   <div class="code-block">
-    <pre><code>{{ text }}</code></pre>
+    <pre><code>{{ content }}</code></pre>
   </div>
 {% endblock %}
