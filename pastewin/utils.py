@@ -1,7 +1,9 @@
-import urllib3
+from os import environ
 from flask import abort
+from urllib3 import PoolManager
 
 
+PORT = int(environ.get("PORT", 5000))
 UNITS_MAPPING = [
     (1 << 50, " PB"),
     (1 << 40, " TB"),
@@ -10,19 +12,21 @@ UNITS_MAPPING = [
     (1 << 10, " KB"),
     (1, (" Byte", " Bytes")),
 ]
-http = urllib3.PoolManager()
+ENDPOINT = "https://pastebin.com/raw/{}"
+
+http = PoolManager()
 
 
-def get_paste(id: str):
-    r = http.request("GET", f"https://pastebin.com/raw/{id}")
+def paste_content(id: str) -> str:
+    response = http.request("GET", ENDPOINT.format(id))
 
-    if r.status != 200:
+    if response.status != 200:
         abort(404)
 
-    return r
+    return response.data.decode("utf-8")
 
 
-def pretty_size(bytes: int, units=UNITS_MAPPING):
+def pretty_size(bytes: int, units: list = UNITS_MAPPING) -> str:
     # Source: https://stackoverflow.com/a/12912296
 
     bytes = len(bytes.encode("utf-8"))
