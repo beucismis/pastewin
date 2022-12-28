@@ -19,16 +19,21 @@ def about():
 
 @app.route("/<id>")
 def paste(id: str):
-    content = utils.paste_content(id)
+    content = utils.paste_content(id).decode("utf-8")
 
     return flask.render_template(
-        "paste.html", id=id, size=utils.pretty_size(content), content=content,
+        "paste.html",
+        id=id,
+        size=utils.pretty_size(content),
+        content=content,
     )
 
 
 @app.route("/raw/<id>")
 def raw(id: str):
-    return flask.Response(utils.paste_content(id), mimetype="text/plain")
+    return flask.Response(
+        utils.paste_content(id).decode("utf-8"), mimetype="text/plain"
+    )
 
 
 @app.route("/dl/<id>")

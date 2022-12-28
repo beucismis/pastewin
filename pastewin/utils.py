@@ -23,7 +23,7 @@ def paste_content(id: str) -> str:
     if response.status != 200:
         abort(404)
 
-    return response.data.decode("utf-8")
+    return response.data
 
 
 def pretty_size(bytes: int, units: list = UNITS_MAPPING) -> str:
